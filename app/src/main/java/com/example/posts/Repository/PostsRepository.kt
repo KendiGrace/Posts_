@@ -12,6 +12,7 @@ class PostsRepository {
     val retrofit= ApiClient.buildApiClient(ApiInterface::class.java)
 
     suspend fun getPosts():Call<List<Post>> =
+//        Dispatchers.IO assigns the task to a random thread that helps in executing the request
         withContext(Dispatchers.IO){
             var response=retrofit.getPosts()
             return@withContext response
